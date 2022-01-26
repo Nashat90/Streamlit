@@ -19,7 +19,7 @@ progress_bar = st.progress(0)
 def read_headers():
     for file_name in excelfiles:
         ind = excelfiles.index(file_name)
-        if '$' in file_name:
+        if '$' in file_name or '.py' in file_name:
             continue
         progress_bar.progress(int(ind/file_factor))
         xls = pd.ExcelFile(file_path +'\\' + file_name)
