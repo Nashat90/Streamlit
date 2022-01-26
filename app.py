@@ -9,6 +9,8 @@ file_path = os.getcwd()
 st.write(file_path)
 #read excel files
 for fil in os.listdir(file_path):
+    if 'xlsx' not in fil:
+        continue
     st.write(fil)
     excelfiles.append(fil)
 #open and read excel files
