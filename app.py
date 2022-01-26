@@ -9,6 +9,7 @@ file_path = os.getcwd()
 st.write(file_path)
 #read excel files
 for fil in os.listdir(file_path):
+    st.write(fil)
     excelfiles.append(fil)
 #open and read excel files
 st.header("SPE Dataset Dashboard 2022")
