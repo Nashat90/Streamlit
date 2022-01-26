@@ -1,7 +1,6 @@
 import os, sys, pandas as pd
 from unicodedata import name
 import streamlit as st,numpy as np
-import matplotlib.pyplot as plt
 excelfiles = []
 wells = []
 well_names = []
