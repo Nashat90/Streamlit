@@ -5,7 +5,7 @@ excelfiles = []
 wells = []
 well_names = []
 #Get Current Path
-file_path = os.getcwd() +"\Streamlit-ProductionDashboard" + r'\SPE Well Data'
+file_path = os.getcwd() + r'/SPE Well Data'
 st.write(file_path)
 #read excel files
 for fil in os.listdir(file_path):
