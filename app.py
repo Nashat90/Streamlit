@@ -22,10 +22,10 @@ progress_bar = st.progress(0)
 def read_headers():
     for file_name in excelfiles:
         ind = excelfiles.index(file_name)
-        if '$' in file_name or '.py' in file_name:
+        if 'xlsx'not in file_name:
             continue
         progress_bar.progress(int(ind/file_factor))
-        xls = pd.ExcelFile(file_path +'\\' + file_name)
+        xls = pd.ExcelFile(file_path +'/' + file_name)
         df = pd.read_excel(xls,sheet_name="Well Data",header=None)
         df_proddata = pd.DataFrame( pd.read_excel(xls,sheet_name='Production Data')).drop(0)
         well =str(df.iloc[1][1])+' '+str(df.iloc[2][1]) 
