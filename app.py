@@ -1,5 +1,4 @@
 import os, sys, pandas as pd
-import openpyxl as pyxl
 from unicodedata import name
 import streamlit as st,numpy as np
 excelfiles = []
