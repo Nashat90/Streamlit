@@ -42,7 +42,8 @@ def read_headers():
     st.write('Created side bar, Well Count', len(well_names))
     st.session_state.wells = well_names
 read_headers()
-sidebar = st.sidebar.radio(options=st.session_state.wells,label="Select A Well")
+if st.session_state.wells is not None:
+    sidebar = st.sidebar.radio(options=st.session_state.wells,label="Select A Well")
 if sidebar is not None:
     st.subheader("Current Well  :"+ sidebar)
 left_col,right_column = st.columns(2)
