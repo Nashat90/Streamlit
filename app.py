@@ -1,5 +1,7 @@
 import os, sys, pandas as pd
+import matplotlib.pyplot as plt
 import streamlit as st
+from sympy import plot
 excelfiles = []
 wells = []
 well_names = []
@@ -62,3 +64,8 @@ if sidebar is not None:
              right_column.line_chart(df[selectbox3])
              selectbox4 = st.selectbox(options=pd.DataFrame(st.session_state[sidebar]).columns,label='Variable 4')
              right_column.bar_chart(df[selectbox4])
+         multiselect = st.multiselect(options=pd.DataFrame(st.session_state[sidebar]).columns,label="Select To Compare")
+         st.line_chart(df[multiselect])
+         fig, ax = plt.subplots() 
+         ax.plot(df[multiselect])
+         st.pyplot(fig)
