@@ -2,6 +2,7 @@ import os, sys, pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 from sympy import plot
+import xlrd as xl
 excelfiles = []
 wells = []
 well_names = []
@@ -46,6 +47,8 @@ def read_headers():
 read_headers()
 if st.session_state.wells is not None:
     sidebar = st.sidebar.radio(options=st.session_state.wells,label="Select A Well")
+elif st.session_state.wells is None:
+    st.session_state.wells = []
 if sidebar is not None:
     st.subheader("Current Well  :"+ sidebar)
 left_col,right_column = st.columns(2)
@@ -66,6 +69,3 @@ if sidebar is not None:
              right_column.bar_chart(df[selectbox4])
          multiselect = st.multiselect(options=pd.DataFrame(st.session_state[sidebar]).columns,label="Select To Compare")
          st.line_chart(df[multiselect])
-         fig, ax = plt.subplots() 
-         ax.plot(df[multiselect])
-         st.pyplot(fig)
