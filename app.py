@@ -9,16 +9,12 @@ wells = []
 well_names = []
 #Get Current Path
 file_path = os.getcwd()
-st.write(file_path)
 #read excel filesimport os, sys, pandas as pd
 from unicodedata import name
 import streamlit as st,numpy as np
 excelfiles = []
 wells = []
 well_names = []
-#Get Current Path
-st.write(os.getcwd())
-file_path = os.getcwd()
 #read excel files
 for fil in os.listdir(file_path):
     if 'xlsx' not in fil:
