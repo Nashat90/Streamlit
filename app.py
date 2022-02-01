@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 from sympy import plot
 import xlrd as xl
+import altair as alt
 excelfiles = []
 wells = []
 well_names = []
@@ -46,6 +47,7 @@ def read_headers():
     st.session_state.wells = well_names
 read_headers()
 if st.session_state.wells is not None:
+    print(len(st.session_state.wells))
     sidebar = st.sidebar.radio(options=st.session_state.wells,label="Select A Well")
 elif st.session_state.wells is None:
     st.session_state.wells = []
@@ -69,3 +71,7 @@ if sidebar is not None:
              right_column.bar_chart(df[selectbox4])
          multiselect = st.multiselect(options=pd.DataFrame(st.session_state[sidebar]).columns,label="Select To Compare")
          st.line_chart(df[multiselect])
+         scatter = alt.Chart(df).mark_point(point=alt.OverlayMarkDef(color='red',opacity=0.5,radius=100)).encode(
+             x='Time (Days)',y='Oil Volume',color='Lease'
+         ).interactive()
+         st.altair_chart(scatter,use_container_width=True)
